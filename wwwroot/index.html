@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To-do CRUD</title>
+
+    <!--Bootstrap css-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!--Custome css-->
+    <link href="css/CustomeStyle.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="row col-md-12 custyle">
+                <div class="col-md-12">
+
+                    <h1 class="card-header text-center font-weight-bold text-uppercase py-4">To-do CRUD</h1>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Add Items</h3>
+                                <button class="btn btn-success btn-lg" id="btnadd">+</button><br />
+                                <div id="divhide">
+                                    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+                                        <div class="form-group mx-sm-3 mb-2">
+                                            <input type="text" class="form-control" id="add-name" placeholder="New to-do">
+                                        </div>
+                                        <input type="submit" id="btnaddandclose" class="btn btn-primary mb-2" value="Add">
+                                    </form>
+                                </div>
+                                <div id="spoiler">
+                                    <h3>Edit Items</h3>
+                                    <form class="my-form">
+                                        <input type="hidden" id="edit-id">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <input type="checkbox" class="form-control form-check-input mb-2" id="edit-isComplete">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="edit-name">
+                                            </div>
+                                            <div class=" col-md-4">
+                                                <input type="submit" class="btn btn-primary mb-2" value="Save">
+                                                <a onclick="closeInput()" class="btn btn-danger" aria-label="Close">&#10006;</a>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <br />
+                                <label>Number of Items in table: </label><p id="counter"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-editable">
+                                    <table class="table table-striped custab">
+                                        <tr>
+                                            <th>Is Complete</th>
+                                            <th>Name</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                        <tbody id="todos"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Bootstrap JS-->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <!--Sweet Alert to show success message-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="site.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //hide div when page is loaded first time
+            $("#divhide").hide();
+
+            //Show div on click on button
+            $("#btnadd").click(function () {
+                $("#divhide").show();
+            });
+
+            //hide div after user added item
+            $("#btnaddandclose").click(function () {
+                $("#divhide").hide();
+            });
+        });
+    </script>
+</body>
+</html>
